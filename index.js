@@ -22,7 +22,7 @@ function generateUrl(data, pid) {
 }
 //test
 const bot = new Telegraf("7228414663:AAGPoaIyvr98mUitGntCrevSVmcEv6A9JaA"); // замените на ваш токен
-const urlDB = "https://playpartnersdbbuyer-d20d34f08ec2.herokuapp.com/";
+const urlDB = "https://playpartnersdbbuyer-d20d34f08ec2.herokuapp.com";
 function parametersApp(app) {
   switch (app) {
     // case "TD":
