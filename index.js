@@ -419,23 +419,23 @@ function parametersApp(app) {
         },
         sub_id_1: {
           name: "sub_id_1",
-          placeholder: "{sub1}",
+          placeholder: "{sub_id_1}",
         },
         sub_id_2: {
           name: "sub_id_2",
-          placeholder: "{sub2}",
+          placeholder: "{sub_id_2}",
         },
         sub_id_3: {
           name: "sub_id_3",
-          placeholder: "{sub3}",
+          placeholder: "{sub_id_3}",
         },
         sub_id_4: {
           name: "sub_id_4",
-          placeholder: "{sub4}",
+          placeholder: "{sub_id_4}",
         },
         sub_id_5: {
           name: "sub_id_5",
-          placeholder: "{sub5}",
+          placeholder: "{sub_id_5}",
         },
       };
     //   case "IRENT":
