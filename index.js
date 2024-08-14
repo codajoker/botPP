@@ -579,13 +579,16 @@ bot.action("create_company", async (ctx) => {
   ctx.reply("Введите ваш номер баера:");
 });
 
-bot.action(["PWAMARKET", "BLACKAPP", "SKYLINE", "WWAIOS"], async (ctx) => {
-  const userId = ctx.from.id;
-  await axios.patch(`${urlDB}/user/${userId}`, {
-    app: ctx.match[0],
-  });
-  ctx.reply("Введите ID оффера в кейтаро");
-});
+bot.action(
+  ["PWAMARKET", "BLACKAPP", "SKYLINE", "WWAIOS", "ZM"],
+  async (ctx) => {
+    const userId = ctx.from.id;
+    await axios.patch(`${urlDB}/user/${userId}`, {
+      app: ctx.match[0],
+    });
+    ctx.reply("Введите ID оффера в кейтаро");
+  }
+);
 
 bot.on("text", async (ctx) => {
   try {
