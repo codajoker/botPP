@@ -25,45 +25,41 @@ const bot = new Telegraf("7228414663:AAGPoaIyvr98mUitGntCrevSVmcEv6A9JaA"); // �
 const urlDB = "https://playpartnersdbbuyer-d20d34f08ec2.herokuapp.com";
 function parametersApp(app) {
   switch (app) {
-    // case "TD":
-    //   return {
-    //     sub_id_1: {
-    //       name: "sub_id_1",
-    //       placeholder: "{sub1}",
-    //     },
-    //     sub_id_2: {
-    //       name: "sub_id_2",
-    //       placeholder: "{sub2}",
-    //     },
-    //     sub_id_3: {
-    //       name: "sub_id_3",
-    //       placeholder: "{sub3}",
-    //     },
-    //     sub_id_4: {
-    //       name: "sub_id_4",
-    //       placeholder: "{sub4}",
-    //     },
-    //     sub_id_5: {
-    //       name: "sub_id_5",
-    //       placeholder: "{sub5}",
-    //     },
-    //     sub_id_6: {
-    //       name: "sub_id_6",
-    //       placeholder: "{sub6}",
-    //     },
-    //     sub_id_7: {
-    //       name: "ad_id",
-    //       placeholder: "{ad_id}",
-    //     },
-    //     sub_id_8: {
-    //       name: "deviceID",
-    //       placeholder: "{deviceID}",
-    //     },
-    //     sub_id_9: {
-    //       name: "app_id",
-    //       placeholder: "{app_id}",
-    //     },
-    //   };
+    case "TD":
+      return {
+        sub_id_2: {
+          name: "sub_id_2",
+          placeholder: "{sub2}",
+        },
+        sub_id_3: {
+          name: "sub_id_3",
+          placeholder: "{sub3}",
+        },
+        sub_id_4: {
+          name: "sub_id_4",
+          placeholder: "{sub4}",
+        },
+        sub_id_5: {
+          name: "sub_id_5",
+          placeholder: "{sub5}",
+        },
+        sub_id_6: {
+          name: "sub_id_6",
+          placeholder: "{sub6}",
+        },
+        sub_id_7: {
+          name: "ad_id",
+          placeholder: "{ad_id}",
+        },
+        sub_id_8: {
+          name: "deviceID",
+          placeholder: "{deviceID}",
+        },
+        sub_id_9: {
+          name: "app_id",
+          placeholder: "{app_id}",
+        },
+      };
 
     //   return {
     //     sub_id_1: {
@@ -479,8 +475,8 @@ function parametersApp(app) {
 }
 function appId(app) {
   switch (app) {
-    // case "TD":
-    //   return 8;
+    case "TD":
+      return 10;
     // case "WWA":
     //   return 1;
     // case "WWAPWA":
@@ -507,8 +503,8 @@ function appId(app) {
 }
 function appNaming(app, uniqIDCampaign, pid) {
   switch (app) {
-    //   case "TD":
-    //     return `yflgjsr&push=gamppanda&sub7=${uniqIDCampaign}&sub2={sub2}&sub3=${pid}&sub4={sub4}&sub5={sub5}&sub6={sub6}`;
+    case "TD":
+      return `nswdsro&push=playpartners&sub7=${uniqIDCampaign}&sub2={sub2}&sub3=${pid}&sub4={sub4}&sub5={sub5}&sub6={sub6}`;
     //   case "WWA":
     //     return `nhlxdd_panda_${uniqIDCampaign}_${pid}_sub4_sub5_sub6`;
     case "TRIDENT":
@@ -522,8 +518,8 @@ function appNaming(app, uniqIDCampaign, pid) {
 
 function appDeeplink(app, uniqIDCampaign, pid) {
   switch (app) {
-    //   case "TD":
-    //     return `myapp://yflgjsr&push=gamppanda&sub7=${uniqIDCampaign}&sub2={sub2}&sub3=${pid}&sub4={sub4}&sub5={sub5}&sub6={sub6}`;
+    case "TD":
+      return `myapp://nswdsro&push=playpartners&sub7=${uniqIDCampaign}&sub2={sub2}&sub3=${pid}&sub4={sub4}&sub5={sub5}&sub6={sub6}`;
     //   case "WWA":
     //     return `myapp://nhlxdd_panda_${uniqIDCampaign}_${pid}_sub4_sub5_sub6`;
     //   case "TOPTIER":
@@ -582,7 +578,7 @@ bot.action("create_company", async (ctx) => {
 });
 
 bot.action(
-  ["PWAMARKET", "BLACKAPP", "SKYLINE", "WWAIOS", "ZM", "TRIDENT"],
+  ["PWAMARKET", "BLACKAPP", "SKYLINE", "WWAIOS", "ZM", "TRIDENT", "TD"],
   async (ctx) => {
     const userId = ctx.from.id;
     await axios.patch(`${urlDB}/user/${userId}`, {
@@ -607,10 +603,10 @@ bot.on("text", async (ctx) => {
       ctx.reply(
         "Выберите приложение:",
         Markup.inlineKeyboard([
-          // [
-          //   Markup.button.callback("TD", "TD"),
-          //   Markup.button.callback("WWA", "WWA"),
-          // ],
+          [
+            Markup.button.callback("TD", "TD"),
+            // Markup.button.callback("WWA", "WWA"),
+          ],
           [
             Markup.button.callback("ZM", "ZM"),
             Markup.button.callback("TRIDENT", "TRIDENT"),
