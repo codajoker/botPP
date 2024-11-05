@@ -165,59 +165,61 @@ function parametersApp(app) {
     //       placeholder: "{sub6}",
     //     },
     //   };
-    // case "TRIDENT":
-    //   return {
-    //     external_id: {
-    //       placeholder: "{subid}",
-    //     },
-    //     sub_id_1: {
-    //       name: "sub1",
-    //       placeholder: "{sub1}",
-    //     },
-    //     sub_id_2: {
-    //       name: "sub2",
-    //       placeholder: "{sub2}",
-    //     },
-    //     sub_id_3: {
-    //       name: "sub3",
-    //       placeholder: "{sub3}",
-    //     },
-    //     sub_id_4: {
-    //       name: "sub4",
-    //       placeholder: "{sub4}",
-    //     },
-    //     sub_id_5: {
-    //       name: "sub5",
-    //       placeholder: "{sub5}",
-    //     },
-    //     sub_id_6: {
-    //       name: "sub6",
-    //       placeholder: "{sub6}",
-    //     },
-    //     sub_id_7: {
-    //       alias: "Application Campaign",
-    //       name: "app_campaign",
-    //       placeholder: "{app_campaign}",
-    //     },
-    //     sub_id_8: {
-    //       alias: "Application Name",
+    case "TRIDENT":
+      return {
+        external_id: {
+          name: "external_id",
 
-    //       name: "app_name",
-    //       placeholder: "{app_name}",
-    //     },
-    //     sub_id_9: {
-    //       alias: "Bundle",
+          placeholder: "{subid}",
+        },
+        sub_id_1: {
+          name: "sub1",
+          placeholder: "{sub1}",
+        },
+        sub_id_2: {
+          name: "sub2",
+          placeholder: "{sub2}",
+        },
+        sub_id_3: {
+          name: "sub3",
+          placeholder: "{sub3}",
+        },
+        sub_id_4: {
+          name: "sub4",
+          placeholder: "{sub4}",
+        },
+        sub_id_5: {
+          name: "sub5",
+          placeholder: "{sub5}",
+        },
+        sub_id_6: {
+          name: "sub6",
+          placeholder: "{sub6}",
+        },
+        sub_id_7: {
+          alias: "Application Campaign",
+          name: "app_campaign",
+          placeholder: "{app_campaign}",
+        },
+        sub_id_8: {
+          alias: "Application Name",
 
-    //       name: "bundle",
-    //       placeholder: "{bundle}",
-    //     },
-    //     sub_id_10: {
-    //       alias: "Creo name",
+          name: "app_name",
+          placeholder: "{app_name}",
+        },
+        sub_id_9: {
+          alias: "Bundle",
 
-    //       name: "adgroup",
-    //       placeholder: "{adgroup}",
-    //     },
-    //   };
+          name: "bundle",
+          placeholder: "{bundle}",
+        },
+        sub_id_10: {
+          alias: "Creo name",
+
+          name: "adgroup",
+          placeholder: "{adgroup}",
+        },
+      };
     // case "MNSTR":
     //   return {
     //     external_id: {
@@ -483,8 +485,8 @@ function appId(app) {
     //   return 1;
     // case "WWAPWA":
     //   return 33;
-    // case "TRIDENT":
-    //   return 2;
+    case "TRIDENT":
+      return 11;
     case "ZM":
       return 8;
     // case "MNSTR":
@@ -504,48 +506,48 @@ function appId(app) {
   }
 }
 function appNaming(app, uniqIDCampaign, pid) {
-  // switch (app) {
-  //   case "TD":
-  //     return `yflgjsr&push=gamppanda&sub7=${uniqIDCampaign}&sub2={sub2}&sub3=${pid}&sub4={sub4}&sub5={sub5}&sub6={sub6}`;
-  //   case "WWA":
-  //     return `nhlxdd_panda_${uniqIDCampaign}_${pid}_sub4_sub5_sub6`;
-  //   case "TRIDENT":
-  //     return `leadpanda_${uniqIDCampaign}_${pid}_sub4_sub5`;
-  //   case "MNSTR":
-  //     return `panfshgame_${uniqIDCampaign}_${pid}_sub4_sub5_https://zeusgaze.space`;
-  //   case "MIRA":
-  //     return `xgffvtst&sub0=${uniqIDCampaign}&sub1={sub_id_1}&sub2={sub_id_2}&sub3=${pid}&sub4={sub_id_4}&sub5={sub_id_5}&sub6={sub_id_6} `;
-  // }
+  switch (app) {
+    //   case "TD":
+    //     return `yflgjsr&push=gamppanda&sub7=${uniqIDCampaign}&sub2={sub2}&sub3=${pid}&sub4={sub4}&sub5={sub5}&sub6={sub6}`;
+    //   case "WWA":
+    //     return `nhlxdd_panda_${uniqIDCampaign}_${pid}_sub4_sub5_sub6`;
+    case "TRIDENT":
+      return `playpartners_${uniqIDCampaign}_${pid}_sub4_sub5`;
+    //   case "MNSTR":
+    //     return `panfshgame_${uniqIDCampaign}_${pid}_sub4_sub5_https://zeusgaze.space`;
+    //   case "MIRA":
+    //     return `xgffvtst&sub0=${uniqIDCampaign}&sub1={sub_id_1}&sub2={sub_id_2}&sub3=${pid}&sub4={sub_id_4}&sub5={sub_id_5}&sub6={sub_id_6} `;
+  }
 }
 
 function appDeeplink(app, uniqIDCampaign, pid) {
-  // switch (app) {
-  //   case "TD":
-  //     return `myapp://yflgjsr&push=gamppanda&sub7=${uniqIDCampaign}&sub2={sub2}&sub3=${pid}&sub4={sub4}&sub5={sub5}&sub6={sub6}`;
-  //   case "WWA":
-  //     return `myapp://nhlxdd_panda_${uniqIDCampaign}_${pid}_sub4_sub5_sub6`;
-  //   case "TOPTIER":
-  //     return `myapp://${uniqIDCampaign}_${pid}_leadpanda_sub2_${pid}_sub4_sub5_sub6`;
-  //   case "TRIDENT":
-  //     return `myapp://leadpanda/${uniqIDCampaign}/${pid}/sub4/sub5`;
-  //   case "MIRA":
-  //     return `myapp://xgffvtst&sub0=${uniqIDCampaign}&sub1={sub1}&sub2={sub2}&sub3=${pid}&sub4={sub4}&sub5={sub5}&sub6={sub6} `;
-  // }
+  switch (app) {
+    //   case "TD":
+    //     return `myapp://yflgjsr&push=gamppanda&sub7=${uniqIDCampaign}&sub2={sub2}&sub3=${pid}&sub4={sub4}&sub5={sub5}&sub6={sub6}`;
+    //   case "WWA":
+    //     return `myapp://nhlxdd_panda_${uniqIDCampaign}_${pid}_sub4_sub5_sub6`;
+    //   case "TOPTIER":
+    //     return `myapp://${uniqIDCampaign}_${pid}_leadpanda_sub2_${pid}_sub4_sub5_sub6`;
+    case "TRIDENT":
+      return `myapp://playpartners/${uniqIDCampaign}/${pid}/sub4/sub5`;
+    //   case "MIRA":
+    //     return `myapp://xgffvtst&sub0=${uniqIDCampaign}&sub1={sub1}&sub2={sub2}&sub3=${pid}&sub4={sub4}&sub5={sub5}&sub6={sub6} `;
+  }
 }
 
 function appNamingAndDeeplink(app, uniqIDCampaign, pid) {
   if (["SKYLINE"].includes(app)) {
     return `https://armaty-mouw.buzz/?app=ИДЕНТИФИКАТОРПРИЛОЖЕНИЯ&campaign=campaign:playpartners!|!${uniqIDCampaign}!|!sub_id_1:vsfbp!|!sub_id_2:test!|!sub_id_3:${pid}!|!sub_id_4:test!|!sub_ud_5:test!|!sub_id_6:test!|!sub_id_7:test&pixel_id=ВАШ_ПИКСЕЛЬ&pid=playpartners`;
   }
-  // if (["TD", "MIRA", "TRIDENT", "WWA", "MNSTR"].includes(app)) {
-  //   return `Naming \n\n ${appNaming(
-  //     app,
-  //     uniqIDCampaign,
-  //     pid
-  //   )}\n\n Deeplink \n\n${appDeeplink(app, uniqIDCampaign, pid)}`;
-  // } else {
-  //   return "";
-  // }
+  if (["TD", "MIRA", "TRIDENT", "WWA", "MNSTR"].includes(app)) {
+    return `Naming \n\n ${appNaming(
+      app,
+      uniqIDCampaign,
+      pid
+    )}\n\n Deeplink \n\n${appDeeplink(app, uniqIDCampaign, pid)}`;
+  } else {
+    return "";
+  }
 }
 
 bot.start(async (ctx) => {
@@ -580,7 +582,7 @@ bot.action("create_company", async (ctx) => {
 });
 
 bot.action(
-  ["PWAMARKET", "BLACKAPP", "SKYLINE", "WWAIOS", "ZM"],
+  ["PWAMARKET", "BLACKAPP", "SKYLINE", "WWAIOS", "ZM", "TRIDENT"],
   async (ctx) => {
     const userId = ctx.from.id;
     await axios.patch(`${urlDB}/user/${userId}`, {
@@ -609,7 +611,10 @@ bot.on("text", async (ctx) => {
           //   Markup.button.callback("TD", "TD"),
           //   Markup.button.callback("WWA", "WWA"),
           // ],
-          [Markup.button.callback("ZM", "ZM")],
+          [
+            Markup.button.callback("ZM", "ZM"),
+            Markup.button.callback("TRIDENT", "TRIDENT"),
+          ],
           [
             Markup.button.callback("WWAIOS", "WWAIOS"),
             Markup.button.callback("SKYLINE", "SKYLINE"),
@@ -688,6 +693,28 @@ bot.on("text", async (ctx) => {
           if ("SKYLINE" === userDB.data.app) {
             await ctx.reply(
               `Ваша ссылка для залива НЕ ЗАБУДЬ АЙДИ ПРИЛЫ \n\n https://armaty-mouw.buzz/?app=ИДЕНТИФИКАТОРПРИЛОЖЕНИЯ&campaign=campaign:playpartners!|!${data.alias}!|!sub_id_1:vsfbp!|!sub_id_2:test!|!sub_id_3:${userDB.data.pid}!|!sub_id_4:test!|!sub_ud_5:test!|!sub_id_6:test!|!sub_id_7:test&pixel_id=ВАШ_ПИКСЕЛЬ&pid=playpartners`
+            );
+          }
+          if (
+            ["TD", "MIRA", "TRIDENT", "WWA", "MNSTR"].includes(userDB.data.app)
+          ) {
+            await ctx.reply(`Naming`);
+            await ctx.reply(
+              `\`${appNaming(
+                userDB.data.app,
+                aliasCampaign,
+                userDB.data.pid
+              )}\``,
+              { parse_mode: "MarkdownV2" }
+            );
+            await ctx.reply(`Deeplink`);
+            await ctx.reply(
+              `\`${appDeeplink(
+                userDB.data.app,
+                aliasCampaign,
+                userDB.data.pid
+              )}\``,
+              { parse_mode: "MarkdownV2" }
             );
           } else {
             await ctx.reply(
