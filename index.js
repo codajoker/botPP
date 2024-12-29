@@ -216,33 +216,54 @@ function parametersApp(app) {
           placeholder: "{adgroup}",
         },
       };
-    // case "MNSTR":
-    //   return {
-    //     external_id: {
-    //       placeholder: "{subid}",
-    //     },
+    case "BANDA":
+      return {
+        external_id: {
+          placeholder: "{subid}",
+        },
 
-    //     sub_id_2: {
-    //       name: "sub2",
-    //       placeholder: "{sub2}",
-    //     },
-    //     sub_id_3: {
-    //       name: "sub3",
-    //       placeholder: "{sub3}",
-    //     },
-    //     sub_id_4: {
-    //       name: "sub4",
-    //       placeholder: "{sub4}",
-    //     },
-    //     sub_id_5: {
-    //       name: "sub5",
-    //       placeholder: "{sub5}",
-    //     },
+        sub_id_2: {
+          name: "sub2",
+          placeholder: "{sub_id_2}",
+        },
+        sub_id_3: {
+          name: "sub3",
+          placeholder: "{sub_id_3}",
+        },
+        sub_id_4: {
+          name: "sub4",
+          placeholder: "{sub_id_4}",
+        },
+        sub_id_5: {
+          name: "sub5",
+          placeholder: "{sub_id_5}",
+        },
+        sub_id_6: {
+          name: "sub6",
+          placeholder: "{sub_id_6}",
+        },
+        sub_id_7: {
+          name: "sub7",
+          placeholder: "{sub_id_7}",
+        },
+        sub_id_8: {
+          name: "sub8",
+          placeholder: "{sub_id_8}",
+        },
+        sub_id_9: {
+          name: "sub9",
+          placeholder: "{sub_id_9}",
+        },
+        sub_id_10: {
+          name: "sub10",
+          placeholder: "{sub_id_10}",
+        },
 
-    //     sub_id_25: {
-    //       placeholder: "{offerid}",
-    //     },
-    //   };
+        sub_id_15: {
+          name: "sub15",
+          placeholder: "{app_id}",
+        },
+      };
     case "SKYLINE":
       return {
         sub_id_1: {
@@ -485,8 +506,8 @@ function appId(app) {
       return 11;
     case "ZM":
       return 8;
-    // case "MNSTR":
-    //   return 10;
+    case "BANDA":
+      return 14;
     // case "PWAGROUP":
     //   return 4;
     case "PWAMARKET":
@@ -509,8 +530,8 @@ function appNaming(app, uniqIDCampaign, pid) {
     //     return `nhlxdd_panda_${uniqIDCampaign}_${pid}_sub4_sub5_sub6`;
     case "TRIDENT":
       return `playpartners_${uniqIDCampaign}_${pid}_sub4_sub5`;
-    //   case "MNSTR":
-    //     return `panfshgame_${uniqIDCampaign}_${pid}_sub4_sub5_https://zeusgaze.space`;
+    case "BANDA":
+      return `bndrnt000113&key=${uniqIDCampaign}&sub2={sub2}&sub3=${pid}&sub4={sub4}&sub5={sub5}&sub6={sub6}&sub7={sub7}&sub8={sub8}&sub9={sub9}&sub10={sub10}`;
     //   case "MIRA":
     //     return `xgffvtst&sub0=${uniqIDCampaign}&sub1={sub_id_1}&sub2={sub_id_2}&sub3=${pid}&sub4={sub_id_4}&sub5={sub_id_5}&sub6={sub_id_6} `;
   }
@@ -522,8 +543,8 @@ function appDeeplink(app, uniqIDCampaign, pid) {
       return `myapp://nswdsro&push=playpartners&sub7=${uniqIDCampaign}&sub2={sub2}&sub3=${pid}&sub4={sub4}&sub5={sub5}&sub6={sub6}`;
     //   case "WWA":
     //     return `myapp://nhlxdd_panda_${uniqIDCampaign}_${pid}_sub4_sub5_sub6`;
-    //   case "TOPTIER":
-    //     return `myapp://${uniqIDCampaign}_${pid}_leadpanda_sub2_${pid}_sub4_sub5_sub6`;
+    case "BANDA":
+      return `myapp://bndrnt000113&key=${uniqIDCampaign}&sub2={sub2}&sub3=${pid}&sub4={sub4}&sub5={sub5}&sub6={sub6}&sub7={sub7}&sub8={sub8}&sub9={sub9}&sub10={sub10}`;
     case "TRIDENT":
       return `myapp://playpartners/${uniqIDCampaign}/${pid}/sub4/sub5`;
     //   case "MIRA":
@@ -535,7 +556,7 @@ function appNamingAndDeeplink(app, uniqIDCampaign, pid) {
   if (["SKYLINE"].includes(app)) {
     return `https://armaty-mouw.buzz/?app=ИДЕНТИФИКАТОРПРИЛОЖЕНИЯ&campaign=campaign:playpartners!|!${uniqIDCampaign}!|!sub_id_1:vsfbp!|!sub_id_2:test!|!sub_id_3:${pid}!|!sub_id_4:test!|!sub_ud_5:test!|!sub_id_6:test!|!sub_id_7:test&pixel_id=ВАШ_ПИКСЕЛЬ&pid=playpartners`;
   }
-  if (["TD", "MIRA", "TRIDENT", "WWA", "MNSTR"].includes(app)) {
+  if (["TD", "MIRA", "TRIDENT", "WWA", "MNSTR", "BANDA"].includes(app)) {
     return `Naming \n\n ${appNaming(
       app,
       uniqIDCampaign,
@@ -578,7 +599,16 @@ bot.action("create_company", async (ctx) => {
 });
 
 bot.action(
-  ["PWAMARKET", "BLACKAPP", "SKYLINE", "WWAIOS", "ZM", "TRIDENT", "TD"],
+  [
+    "PWAMARKET",
+    "BLACKAPP",
+    "SKYLINE",
+    "WWAIOS",
+    "ZM",
+    "TRIDENT",
+    "TD",
+    "BANDA",
+  ],
   async (ctx) => {
     const userId = ctx.from.id;
     await axios.patch(`${urlDB}/user/${userId}`, {
@@ -605,7 +635,7 @@ bot.on("text", async (ctx) => {
         Markup.inlineKeyboard([
           [
             Markup.button.callback("TD", "TD"),
-            // Markup.button.callback("WWA", "WWA"),
+            Markup.button.callback("BANDA", "BANDA"),
           ],
           [
             Markup.button.callback("ZM", "ZM"),
@@ -692,7 +722,7 @@ bot.on("text", async (ctx) => {
             );
           }
           if (
-            ["TD", "MIRA", "TRIDENT", "WWA", "MNSTR"].includes(userDB.data.app)
+            ["TD", "MIRA", "TRIDENT", "WWA", "BANDA"].includes(userDB.data.app)
           ) {
             await ctx.reply(`Naming`);
             await ctx.reply(
