@@ -95,45 +95,45 @@ function parametersApp(app) {
     //       placeholder: "{app_id}",
     //     },
     //   };
-    // case "WWA":
-    //   return {
-    //     sub_id_1: {
-    //       name: "sub_id_1",
-    //       placeholder: "{subid}",
-    //     },
-    //     sub_id_2: {
-    //       name: "sub_id_2",
-    //       placeholder: "{sub2}",
-    //     },
-    //     sub_id_3: {
-    //       name: "sub_id_3",
-    //       placeholder: "{sub3}",
-    //     },
-    //     sub_id_4: {
-    //       name: "sub_id_4",
-    //       placeholder: "{sub4}",
-    //     },
-    //     sub_id_5: {
-    //       name: "sub_id_5",
-    //       placeholder: "{sub5}",
-    //     },
-    //     sub_id_6: {
-    //       name: "sub_id_6",
-    //       placeholder: "{sub6}",
-    //     },
-    //     sub_id_7: {
-    //       name: "adset_id",
-    //       placeholder: "{adset_id}",
-    //     },
-    //     sub_id_8: {
-    //       name: "adset",
-    //       placeholder: "{adset}",
-    //     },
-    //     sub_id_9: {
-    //       name: "bundle",
-    //       placeholder: "{bundle}",
-    //     },
-    //   };
+    case "WWAANDROID":
+      return {
+        sub_id_1: {
+          name: "sub_id_1",
+          placeholder: "{subid}",
+        },
+        sub_id_2: {
+          name: "sub_id_2",
+          placeholder: "{sub2}",
+        },
+        sub_id_3: {
+          name: "sub_id_3",
+          placeholder: "{sub3}",
+        },
+        sub_id_4: {
+          name: "sub_id_4",
+          placeholder: "{sub4}",
+        },
+        sub_id_5: {
+          name: "sub_id_5",
+          placeholder: "{sub5}",
+        },
+        sub_id_6: {
+          name: "sub_id_6",
+          placeholder: "{sub6}",
+        },
+        sub_id_7: {
+          name: "adset_id",
+          placeholder: "{adset_id}",
+        },
+        sub_id_8: {
+          name: "adset",
+          placeholder: "{adset}",
+        },
+        sub_id_9: {
+          name: "bundle",
+          placeholder: "{bundle}",
+        },
+      };
     // case "WWAPWA":
     //   return {
     //     sub_id_1: {
@@ -361,6 +361,7 @@ function parametersApp(app) {
           placeholder: "{sub6}",
         },
       };
+
     case "BLACKAPP":
       return {
         external_id: {
@@ -498,8 +499,8 @@ function appId(app) {
   switch (app) {
     case "TD":
       return 10;
-    // case "WWA":
-    //   return 1;
+    case "WWAANDROID":
+      return 12;
     // case "WWAPWA":
     //   return 33;
     case "TRIDENT":
@@ -526,8 +527,8 @@ function appNaming(app, uniqIDCampaign, pid) {
   switch (app) {
     case "TD":
       return `nswdsro&push=playpartners&sub7=${uniqIDCampaign}&sub2={sub2}&sub3=${pid}&sub4={sub4}&sub5={sub5}&sub6={sub6}`;
-    //   case "WWA":
-    //     return `nhlxdd_panda_${uniqIDCampaign}_${pid}_sub4_sub5_sub6`;
+    case "WWAANDROID":
+      return `jykujr_playpartnersbuying_${uniqIDCampaign}_${pid}_sub4_sub5_sub6`;
     case "TRIDENT":
       return `playpartners_${uniqIDCampaign}_${pid}_sub4_sub5`;
     case "BANDA":
@@ -541,8 +542,8 @@ function appDeeplink(app, uniqIDCampaign, pid) {
   switch (app) {
     case "TD":
       return `myapp://nswdsro&push=playpartners&sub7=${uniqIDCampaign}&sub2={sub2}&sub3=${pid}&sub4={sub4}&sub5={sub5}&sub6={sub6}`;
-    //   case "WWA":
-    //     return `myapp://nhlxdd_panda_${uniqIDCampaign}_${pid}_sub4_sub5_sub6`;
+    case "WWAANDROID":
+      return `myapp://jykujr_playpartnersbuying_${uniqIDCampaign}_${pid}_sub4_sub5_sub6`;
     case "BANDA":
       return `myapp://bndrnt000113&key=${uniqIDCampaign}&sub2={sub2}&sub3=${pid}&sub4={sub4}&sub5={sub5}&sub6={sub6}&sub7={sub7}&sub8={sub8}&sub9={sub9}&sub10={sub10}`;
     case "TRIDENT":
@@ -556,7 +557,7 @@ function appNamingAndDeeplink(app, uniqIDCampaign, pid) {
   if (["SKYLINE"].includes(app)) {
     return `https://armaty-mouw.buzz/?app=ИДЕНТИФИКАТОРПРИЛОЖЕНИЯ&campaign=campaign:playpartners!|!${uniqIDCampaign}!|!sub_id_1:vsfbp!|!sub_id_2:test!|!sub_id_3:${pid}!|!sub_id_4:test!|!sub_ud_5:test!|!sub_id_6:test!|!sub_id_7:test&pixel_id=ВАШ_ПИКСЕЛЬ&pid=playpartners`;
   }
-  if (["TD", "MIRA", "TRIDENT", "WWA", "MNSTR", "BANDA"].includes(app)) {
+  if (["TD", "MIRA", "TRIDENT", "WWAANDROID", "MNSTR", "BANDA"].includes(app)) {
     return `Naming \n\n ${appNaming(
       app,
       uniqIDCampaign,
@@ -608,6 +609,7 @@ bot.action(
     "TRIDENT",
     "TD",
     "BANDA",
+    "WWAANDROID",
   ],
   async (ctx) => {
     const userId = ctx.from.id;
@@ -649,6 +651,10 @@ bot.on("text", async (ctx) => {
           [
             Markup.button.callback("PWAMARKET", "PWAMARKET"),
             Markup.button.callback("BLACKAPP", "BLACKAPP"),
+          ],
+          [
+            Markup.button.callback("WWAANDROID", "WWAANDROID"),
+            // Markup.button.callback("BLACKAPP", "BLACKAPP"),
           ],
         ])
       );
@@ -722,7 +728,9 @@ bot.on("text", async (ctx) => {
             );
           }
           if (
-            ["TD", "MIRA", "TRIDENT", "WWA", "BANDA"].includes(userDB.data.app)
+            ["TD", "MIRA", "TRIDENT", "WWAANDROID", "BANDA"].includes(
+              userDB.data.app
+            )
           ) {
             await ctx.reply(`Naming`);
             await ctx.reply(
