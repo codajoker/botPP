@@ -134,38 +134,65 @@ function parametersApp(app) {
           placeholder: "{bundle}",
         },
       };
-    // case "WWAPWA":
-    //   return {
-    //     sub_id_1: {
-    //       name: "sub_id_1",
-    //       placeholder: "{tds_clickid}",
-    //     },
-    //     sub_id_2: {
-    //       name: "sub_id_2",
-    //       placeholder: "{sub2}",
-    //     },
-    //     sub_id_3: {
-    //       name: "sub_id_3",
-    //       placeholder: "{sub3}",
-    //     },
-    //     sub_id_4: {
-    //       name: "sub_id_4",
-    //       placeholder: "{sub4}",
-    //     },
-    //     sub_id_5: {
-    //       name: "sub_id_5",
-    //       placeholder: "{sub5}",
-    //     },
-    //     sub_id_6: {
-    //       name: "sub_id_6",
-    //       placeholder: "{sub6}",
-    //     },
-    //   };
+    case "MIRA":
+      return {
+        sub_id_1: {
+          name: "sub_id_1",
+          placeholder: "{sub1}",
+        },
+        sub_id_2: {
+          name: "sub_id_2",
+          placeholder: "{sub2}",
+        },
+        sub_id_3: {
+          name: "sub_id_3",
+          placeholder: "{sub3}",
+        },
+        sub_id_4: {
+          name: "sub_id_4",
+          placeholder: "{sub4}",
+        },
+        sub_id_5: {
+          name: "sub_id_5",
+          placeholder: "{sub5}",
+        },
+        sub_id_6: {
+          name: "sub_id_6",
+          placeholder: "{sub6}",
+        },
+        sub_id_7: {
+          name: "sub_id_7",
+          placeholder: "{sub7}",
+        },
+        sub_id_8: {
+          name: "sub_id_8",
+          placeholder: "{sub8}",
+        },
+        sub_id_9: {
+          name: "sub_id_9",
+          placeholder: "{sub9}",
+        },
+        sub_id_10: {
+          name: "sub_id_10",
+          placeholder: "{sub10}",
+        },
+        sub_id_11: {
+          name: "sub_id_11",
+          placeholder: "MIRA",
+        },
+        sub_id_12: {
+          name: "sub_id_12",
+          placeholder: "{miraclid}",
+        },
+        sub_id_13: {
+          name: "sub_id_13",
+          placeholder: "{app_id}",
+        },
+      };
     case "TRIDENT":
       return {
         external_id: {
           name: "external_id",
-
           placeholder: "{subid}",
         },
         sub_id_1: {
@@ -519,8 +546,8 @@ function appId(app) {
       return 1;
     case "WWAIOS":
       return 4;
-    // case "MIRA":
-    //   return 9;
+    case "MIRA":
+      return 18;
   }
 }
 function appNaming(app, uniqIDCampaign, pid) {
@@ -533,8 +560,8 @@ function appNaming(app, uniqIDCampaign, pid) {
       return `playpartners_${uniqIDCampaign}_${pid}_sub4_sub5`;
     case "BANDA":
       return `bndrnt000113&key=${uniqIDCampaign}&sub2={sub2}&sub3=${pid}&sub4={sub4}&sub5={sub5}&sub6={sub6}&sub7={sub7}&sub8={sub8}&sub9={sub9}&sub10={sub10}`;
-    //   case "MIRA":
-    //     return `xgffvtst&sub0=${uniqIDCampaign}&sub1={sub_id_1}&sub2={sub_id_2}&sub3=${pid}&sub4={sub_id_4}&sub5={sub_id_5}&sub6={sub_id_6} `;
+    case "MIRA":
+      return `rdpzxjpm&sub0=${uniqIDCampaign}&sub1={sub_id_1}&sub2={sub_id_2}&sub3=${pid}&sub4={sub_id_4}&sub5={sub_id_5}&sub6={sub_id_6} `;
   }
 }
 
@@ -548,8 +575,8 @@ function appDeeplink(app, uniqIDCampaign, pid) {
       return `myapp://bndrnt000113&key=${uniqIDCampaign}&sub2={sub2}&sub3=${pid}&sub4={sub4}&sub5={sub5}&sub6={sub6}&sub7={sub7}&sub8={sub8}&sub9={sub9}&sub10={sub10}`;
     case "TRIDENT":
       return `myapp://playpartners/${uniqIDCampaign}/${pid}/sub4/sub5`;
-    //   case "MIRA":
-    //     return `myapp://xgffvtst&sub0=${uniqIDCampaign}&sub1={sub1}&sub2={sub2}&sub3=${pid}&sub4={sub4}&sub5={sub5}&sub6={sub6} `;
+    case "MIRA":
+      return `myapp://rdpzxjpm&sub0=${uniqIDCampaign}&sub1={sub1}&sub2={sub2}&sub3=${pid}&sub4={sub4}&sub5={sub5}&sub6={sub6} `;
   }
 }
 
@@ -610,6 +637,7 @@ bot.action(
     "TD",
     "BANDA",
     "WWAANDROID",
+    "MIRA",
   ],
   async (ctx) => {
     const userId = ctx.from.id;
@@ -654,7 +682,7 @@ bot.on("text", async (ctx) => {
           ],
           [
             Markup.button.callback("WWAANDROID", "WWAANDROID"),
-            // Markup.button.callback("BLACKAPP", "BLACKAPP"),
+            Markup.button.callback("MIRA", "MIRA"),
           ],
         ])
       );
@@ -728,7 +756,7 @@ bot.on("text", async (ctx) => {
             );
           }
           if (
-            ["TD", "MIRA", "TRIDENT", "WWAANDROID", "BANDA"].includes(
+            ["TD", "MIRA", "TRIDENT", "WWAANDROID", "BANDA", "MIRA"].includes(
               userDB.data.app
             )
           ) {
